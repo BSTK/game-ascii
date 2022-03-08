@@ -3,64 +3,49 @@ Game: Mad Libs - Histórias Loucas
 Video: https://www.youtube.com/watch?v=tWnyBD2src0&t=2159s
 """
 import random
-import shutil
 
-FONT_BOLD = '\033[1m'
-FONT_NORMAL = '\033[0m'
-FONT_AZUL = '\033[38;5;33m'
-FONT_ROSA = '\033[38;5;200m'
-FONT_AMARELA = '\033[38;5;226m'
-FONT_UNDERLINE = '\033[4m'
+import cores
+
+font = cores.Font()
+cores = cores.Cores()
 
 CARTAS = f"""
-{ FONT_BOLD }
-┌───────────────┐┌────────────────┐┌────────────────┐┌────────────────┐ 
-│  ADJETIVOS    ││      VERBO     ││     VERBO      ││ SUBSTANTIVOS   │ 
-|───────────────||────────────────||────────────────||────────────────| 
-│ ○ pobre       ││  ○ baixar      ││   ○ afastando  ││  ○ plantas     │ 
-│ ○ lindo       ││  ○ cuidando    ││   ○ ama        ││  ○ pessoas     │ 
-│ ○ brilhante   ││  ○ achando     ││   ○ Tornei-me  ││  ○ casa        │ 
-│ ○ deveria     ││  ○ fazer       ││   ○ trabalhar  ││  ○ f de semana │ 
-│               ││                ││                ││                │ 
-└───────────────┘└────────────────┘└────────────────┘└────────────────┘ 
-{ FONT_NORMAL }
+{ font.BOLD }
+{ cores.ROSA }\t┌───────────────┐{ cores.AMARELA }┌────────────────┐┌────────────────┐{ cores.AZUL }┌────────────────┐ 
+{ cores.ROSA }\t│  ADJETIVOS    │{ cores.AMARELA }│      VERBO     ││     VERBO      │{ cores.AZUL }│ SUBSTANTIVOS   │ 
+{ cores.ROSA }\t|───────────────|{ cores.AMARELA }|────────────────||────────────────|{ cores.AZUL }|────────────────| 
+{ cores.ROSA }\t│ ○ pobre       │{ cores.AMARELA }│  ○ baixar      ││   ○ afastando  │{ cores.AZUL }│  ○ plantas     │ 
+{ cores.ROSA }\t│ ○ lindo       │{ cores.AMARELA }│  ○ cuidando    ││   ○ ama        │{ cores.AZUL }│  ○ pessoas     │ 
+{ cores.ROSA }\t│ ○ brilhante   │{ cores.AMARELA }│  ○ achando     ││   ○ Tornei-me  │{ cores.AZUL }│  ○ casa        │ 
+{ cores.ROSA }\t│ ✔ deveria     │{ cores.AMARELA }│  ○ fazer       ││   ○ trabalhar  │{ cores.AZUL }│  ○ f de semana │ 
+{ cores.ROSA }\t│               │{ cores.AMARELA }│                ││                │{ cores.AZUL }│                │ 
+{ cores.ROSA }\t└───────────────┘{ cores.AMARELA }└────────────────┘└────────────────┘{ cores.AZUL }└────────────────┘ 
+{ font.NORMAL }
 """
 
-terminal_size = shutil.get_terminal_size().columns
+print(f'{ cores.AMARELA }')
+print(f'\t░░█████   █████              █████    █████      ████████ \n')
+print(f'\t░░██████ ██████             ░░███    ░░███      ░░░░░███ \n')
+print(f'\t░░███░█████░███  ██████   ███████     ░███      ████░██████░░░█████\n')
+print(f'\t░░███░░███ ░███ ░░░░░███ ███░░███     ░███     ░░███░███░░ ██  ████░░\n')
+print(f'\t░░███ ░░░  ░███  ███████░███ ░███     ░███      ░███░███ ░ ██░░█████\n')
+print(f'\t░░███      ░███ ███░░███░███ ░███     ░███      ░███░███ ░ ██░░░░███\n')
+print(f'\t░█████     ████░░███████░░████████    ██████████████████████ ██████\n')
+print(f'{ font.NORMAL }')
 
-
-def texto_centralizado(texto: str):
-    print(texto.center(terminal_size))
-
-
-print('\n')
-
-
-print(f'{ FONT_AMARELA }')
-texto_centralizado('░░█████   █████              █████    █████      ████████ \n')
-texto_centralizado('░░██████ ██████             ░░███    ░░███      ░░░░░███ \n')
-texto_centralizado('░░███░█████░███  ██████   ███████     ░███      ████░██████░░░█████\n')
-texto_centralizado('░░███░░███ ░███ ░░░░░███ ███░░███     ░███     ░░███░███░░ ██  ████░░\n')
-texto_centralizado('░░███ ░░░  ░███  ███████░███ ░███     ░███      ░███░███ ░ ██░░█████\n')
-texto_centralizado('░░███      ░███ ███░░███░███ ░███     ░███      ░███░███ ░ ██░░░░███\n')
-texto_centralizado('░█████     ████░░███████░░████████    ██████████████████████ ██████\n')
-print(f'{ FONT_NORMAL }')
-
-print()
 print(CARTAS)
-print()
 
-verbo_A = input('Informe um verbo: ')
-verbo_B = input('Informe um verbo: ')
-adjetivo = input('Informe um adjetivo: ')
-substantivo = input('Informe um substantivo (plural): ')
+verbo_A = input('\tInforme um verbo: ')
+verbo_B = input('\tInforme um verbo: ')
+adjetivo = input('\tInforme um adjetivo: ')
+substantivo = input('\tInforme um substantivo (plural): ')
 
 print('\n')
 
-verbo_A_formatado = f'{ FONT_BOLD }{ FONT_AMARELA }{ FONT_UNDERLINE }{ verbo_A.upper() }{ FONT_NORMAL }'
-verbo_B_formatado = f'{ FONT_BOLD }{ FONT_AMARELA }{ FONT_UNDERLINE }{ verbo_B.upper() }{ FONT_NORMAL }'
-adjetivo_formatado = f'{ FONT_BOLD }{ FONT_ROSA }{ FONT_UNDERLINE }{ adjetivo.upper() }{ FONT_NORMAL }'
-substantivo_formatado = f'{ FONT_BOLD }{ FONT_AZUL }{ FONT_UNDERLINE }{ substantivo.upper() }{ FONT_NORMAL }'
+verbo_A_formatado = f'{ font.BOLD }{ cores.AMARELA }{ font.UNDERLINE }{ verbo_A.upper() }{ font.NORMAL }'
+verbo_B_formatado = f'{ font.BOLD }{ cores.AMARELA }{ font.UNDERLINE }{ verbo_B.upper() }{ font.NORMAL }'
+adjetivo_formatado = f'{ font.BOLD }{ cores.ROSA }{ font.UNDERLINE }{ adjetivo.upper() }{ font.NORMAL }'
+substantivo_formatado = f'{ font.BOLD }{ cores.AZUL }{ font.UNDERLINE }{ substantivo.upper() }{ font.NORMAL }'
 
 historias_loucas = [
 
@@ -90,5 +75,5 @@ historias_loucas = [
 indice_aleatorio = random.randint(0, len(historias_loucas))
 historia_louca = historias_loucas[indice_aleatorio]
 
-print(historia_louca)
+print(f'\t{historia_louca}')
 print('\n')
